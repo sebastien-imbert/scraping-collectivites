@@ -1,0 +1,22 @@
+{
+  "name": "scrapping-collectivites",
+  "version": "1.0.0",
+  "description": "",
+  "main": "scraping-collectivites.js",
+  "dependencies": {
+    "fsevents": "^2.3.2",
+    "glob": "^13.0.0",
+    "lru-cache": "^11.2.4",
+    "minimatch": "^10.1.1",
+    "minipass": "^7.1.2",
+    "node-fetch": "^3.3.2",
+    "package-json-from-dist": "^1.0.1",
+    "path-scurry": "^2.0.1",
+    "playwright": "^1.58.0",
+    "playwright-core": "^1.58.0",
+    "rimraf": "^6.1.2"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

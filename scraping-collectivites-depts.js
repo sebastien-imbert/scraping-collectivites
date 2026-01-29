@@ -4,34 +4,103 @@ const path = require('path');
 
 // 🔹 URLS DES DÉPARTEMENTS
 const URLS = [
-  'https://lannuaire.service-public.gouv.fr/navigation/centre-val-de-loire/loiret/mairie',         // 45 Loiret
-  'https://lannuaire.service-public.gouv.fr/navigation/occitanie/lot/mairie',                       // 46 Lot
-  'https://lannuaire.service-public.gouv.fr/navigation/nouvelle-aquitaine/lot-et-garonne/mairie',   // 47 Lot-et-Garonne
-  'https://lannuaire.service-public.gouv.fr/navigation/occitanie/lozere/mairie',                    // 48 Lozère
-  'https://lannuaire.service-public.gouv.fr/navigation/pays-de-la-loire/maine-et-loire/mairie',     // 49 Maine-et-Loire
-  'https://lannuaire.service-public.gouv.fr/navigation/normandie/manche/mairie',                      // 50 Manche
-  'https://lannuaire.service-public.gouv.fr/navigation/grand-est/marne/mairie',                      // 51 Marne
-  'https://lannuaire.service-public.gouv.fr/navigation/grand-est/haute-marne/mairie',               // 52 Haute-Marne
-  'https://lannuaire.service-public.gouv.fr/navigation/pays-de-la-loire/mayenne/mairie',            // 53 Mayenne
-  'https://lannuaire.service-public.gouv.fr/navigation/grand-est/meurthe-et-moselle/mairie',        // 54 Meurthe-et-Moselle
-  'https://lannuaire.service-public.gouv.fr/navigation/grand-est/meuse/mairie',                      // 55 Meuse
+  // 56–59
+  'https://lannuaire.service-public.gouv.fr/navigation/bretagne/morbihan/mairie',            // 56
+  'https://lannuaire.service-public.gouv.fr/navigation/bourgogne-franche-comte/nievre/mairie',// 58
+  'https://lannuaire.service-public.gouv.fr/navigation/hauts-de-france/nord/mairie',          // 59
+
+  // 60–64
+  'https://lannuaire.service-public.gouv.fr/navigation/hauts-de-france/oise/mairie',          // 60
+  'https://lannuaire.service-public.gouv.fr/navigation/normandie/orne/mairie',                 // 61
+  'https://lannuaire.service-public.gouv.fr/navigation/hauts-de-france/pas-de-calais/mairie',  // 62
+  'https://lannuaire.service-public.gouv.fr/navigation/nouvelle-aquitaine/pyrenees-atlantiques/mairie', // 64
+
+  // 65–69
+  'https://lannuaire.service-public.gouv.fr/navigation/occitanie/hautes-pyrenees/mairie',     // 65
+  'https://lannuaire.service-public.gouv.fr/navigation/occitanie/pyrenees-orientales/mairie',  // 66
+  'https://lannuaire.service-public.gouv.fr/navigation/grand-est/bas-rhin/mairie',             // 67
+  'https://lannuaire.service-public.gouv.fr/navigation/grand-est/haut-rhin/mairie',            // 68
+  'https://lannuaire.service-public.gouv.fr/navigation/auvergne-rhone-alpes/rhone/mairie',     // 69
+
+  // 70–74
+  'https://lannuaire.service-public.gouv.fr/navigation/bourgogne-franche-comte/haute-saone/mairie', // 70
+  'https://lannuaire.service-public.gouv.fr/navigation/pays-de-la-loire/sarthe/mairie',        // 72
+  'https://lannuaire.service-public.gouv.fr/navigation/auvergne-rhone-alpes/savoie/mairie',    // 73
+  'https://lannuaire.service-public.gouv.fr/navigation/auvergne-rhone-alpes/haute-savoie/mairie', // 74
+
+  // 75–79
+  'https://lannuaire.service-public.gouv.fr/navigation/ile-de-france/paris/mairie',            // 75
+  'https://lannuaire.service-public.gouv.fr/navigation/normandie/seine-maritime/mairie',       // 76
+  'https://lannuaire.service-public.gouv.fr/navigation/ile-de-france/seine-et-marne/mairie',   // 77
+  'https://lannuaire.service-public.gouv.fr/navigation/ile-de-france/yvelines/mairie',         // 78
+  'https://lannuaire.service-public.gouv.fr/navigation/nouvelle-aquitaine/deux-sevres/mairie', // 79
+
+  // 80–84
+  'https://lannuaire.service-public.gouv.fr/navigation/hauts-de-france/somme/mairie',          // 80
+  'https://lannuaire.service-public.gouv.fr/navigation/occitanie/tarn/mairie',                  // 81
+  'https://lannuaire.service-public.gouv.fr/navigation/occitanie/tarn-et-garonne/mairie',      // 82
+  'https://lannuaire.service-public.gouv.fr/navigation/provence-alpes-cote-d-azur/var/mairie', // 83
+  'https://lannuaire.service-public.gouv.fr/navigation/provence-alpes-cote-d-azur/vaucluse/mairie', // 84
+
+  // 85–89
+  'https://lannuaire.service-public.gouv.fr/navigation/pays-de-la-loire/vendee/mairie',        // 85
+  'https://lannuaire.service-public.gouv.fr/navigation/nouvelle-aquitaine/vienne/mairie',      // 86
+  'https://lannuaire.service-public.gouv.fr/navigation/nouvelle-aquitaine/haute-vienne/mairie',// 87
+  'https://lannuaire.service-public.gouv.fr/navigation/grand-est/vosges/mairie',               // 88
+  'https://lannuaire.service-public.gouv.fr/navigation/bourgogne-franche-comte/yonne/mairie',  // 89
+
+  // 90–95
+  'https://lannuaire.service-public.gouv.fr/navigation/bourgogne-franche-comte/territoire-de-belfort/mairie', // 90
+  'https://lannuaire.service-public.gouv.fr/navigation/ile-de-france/essonne/mairie',          // 91
+  'https://lannuaire.service-public.gouv.fr/navigation/ile-de-france/hauts-de-seine/mairie',   // 92
+  'https://lannuaire.service-public.gouv.fr/navigation/ile-de-france/seine-saint-denis/mairie',// 93
+  'https://lannuaire.service-public.gouv.fr/navigation/ile-de-france/val-de-marne/mairie',     // 94
+  'https://lannuaire.service-public.gouv.fr/navigation/ile-de-france/val-d-oise/mairie',       // 95
 ];
+
 
 
 // 🔹 MAP SLUG → CODE DÉPARTEMENT
 const DEPT_CODES = {
-  'loiret': '45',
-  'lot': '46',
-  'lot-et-garonne': '47',
-  'lozere': '48',
-  'maine-et-loire': '49',
-  'manche': '50',
-  'marne': '51',
-  'haute-marne': '52',
-  'mayenne': '53',
-  'meurthe-et-moselle': '54',
-  'meuse': '55',
+  'morbihan': '56',
+  'nievre': '58',
+  'nord': '59',
+  'oise': '60',
+  'orne': '61',
+  'pas-de-calais': '62',
+  'pyrenees-atlantiques': '64',
+  'hautes-pyrenees': '65',
+  'pyrenees-orientales': '66',
+  'bas-rhin': '67',
+  'haut-rhin': '68',
+  'rhone': '69',
+  'haute-saone': '70',
+  'sarthe': '72',
+  'savoie': '73',
+  'haute-savoie': '74',
+  'paris': '75',
+  'seine-maritime': '76',
+  'seine-et-marne': '77',
+  'yvelines': '78',
+  'deux-sevres': '79',
+  'somme': '80',
+  'tarn': '81',
+  'tarn-et-garonne': '82',
+  'var': '83',
+  'vaucluse': '84',
+  'vendee': '85',
+  'vienne': '86',
+  'haute-vienne': '87',
+  'vosges': '88',
+  'yonne': '89',
+  'territoire-de-belfort': '90',
+  'essonne': '91',
+  'hauts-de-seine': '92',
+  'seine-saint-denis': '93',
+  'val-de-marne': '94',
+  'val-d-oise': '95',
 };
+
 
 // 🔹 DOSSIER OUTPUT
 const OUTPUT_DIR = path.join(__dirname, 'data');
